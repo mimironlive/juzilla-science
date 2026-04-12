@@ -2,170 +2,115 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { TOPICS, TopicSlug, PracticeHistoryEntry, TestHistoryEntry } from '@/lib/types'
-import {
-  loadPracticeHistory,
-  loadTestHistory,
-  formatDate,
-  formatSeconds,
-} from '@/lib/storage'
+import { useRouter } from 'next/navigation'
+import { TOPICS, MATH_TOPICS, TopicSlug, MathTopicSlug, PracticeHistoryEntry, MathHistoryEntry, TestHistoryEntry } from '@/lib/types'
+import { loadPracticeHistory, loadMathHistory, loadTestHistory, formatDate, formatSeconds } from '@/lib/storage'
 
 export default function HistoryPage() {
-  const [practiceHistories, setPracticeHistories] = useState<
-    Record<TopicSlug, PracticeHistoryEntry[]>
-  >({} as Record<TopicSlug, PracticeHistoryEntry[]>)
-  const [testHistory, setTestHistory] = useState<TestHistoryEntry[]>([])
+  const router = useRouter()
+  const [practiceH, setPracticeH] = useState<Record<TopicSlug, PracticeHistoryEntry[]>>({} as any)
+  const [mathH, setMathH] = useState<Record<MathTopicSlug, MathHistoryEntry[]>>({} as any)
+  const [testH, setTestH] = useState<TestHistoryEntry[]>([])
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    const ph: Record<string, PracticeHistoryEntry[]> = {}
-    TOPICS.forEach((t) => {
-      ph[t.slug] = loadPracticeHistory(t.slug)
-    })
-    setPracticeHistories(ph as Record<TopicSlug, PracticeHistoryEntry[]>)
-    setTestHistory(loadTestHistory())
+    const ph: any = {}
+    TOPICS.forEach(t => { ph[t.slug] = loadPracticeHistory(t.slug) })
+    setPracticeH(ph)
+    const mh: any = {}
+    MATH_TOPICS.forEach(t => { mh[t.slug] = loadMathHistory(t.slug) })
+    setMathH(mh)
+    setTestH(loadTestHistory())
     setMounted(true)
   }, [])
 
-  if (!mounted) {
+  if (!mounted) return null
+
+  const ScoreRow = ({ score, total, date, time }: { score: number; total: number; date: number; time?: number }) => {
+    const pct = Math.round((score / total) * 100)
+    const colour = pct === 100 ? 'text-green-600' : pct >= 80 ? 'text-juz-purple' : pct >= 60 ? 'text-amber-600' : 'text-red-500'
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-violet-400 text-lg animate-pulse">Loading...</div>
+      <div className="flex items-center gap-3 py-2.5 border-b border-gray-50 last:border-0">
+        <span className={`font-black text-base w-12 ${colour}`}>{pct}%</span>
+        <span className="text-gray-500 text-sm flex-1">{score}/{total} correct</span>
+        {time !== undefined && <span className="text-xs text-gray-400">⏱ {formatSeconds(time)}</span>}
+        <span className="text-xs text-gray-300">{formatDate(date)}</span>
       </div>
     )
   }
 
-  const hasAnyHistory =
-    TOPICS.some((t) => (practiceHistories[t.slug] ?? []).length > 0) ||
-    testHistory.length > 0
+  const hasAny = TOPICS.some(t => (practiceH[t.slug] ?? []).length > 0)
+    || MATH_TOPICS.some(t => (mathH[t.slug] ?? []).length > 0)
+    || testH.length > 0
 
   return (
-    <div className="min-h-screen bg-violet-50">
-      <header className="bg-violet-700 text-white shadow">
-        <div className="max-w-2xl mx-auto px-4 py-4">
-          <Link href="/" className="text-white/80 text-sm hover:text-white">
-            ← Home
-          </Link>
-          <h1 className="text-xl font-black mt-1">Score History</h1>
+    <div className="min-h-screen bg-juz-purple-bg">
+      <div className="gradient-purple px-4 pt-6 pb-10">
+        <div className="max-w-lg mx-auto">
+          <Link href="/" className="text-white/80 text-sm font-medium">← Home</Link>
+          <h1 className="text-2xl font-black text-white mt-2">Score History 📊</h1>
         </div>
-      </header>
+      </div>
 
-      <main className="max-w-2xl mx-auto px-4 py-6 space-y-8 pb-12">
-        {!hasAnyHistory && (
-          <div className="text-center py-16">
-            <div className="text-5xl mb-4">📭</div>
-            <p className="text-gray-500 font-medium">No history yet.</p>
-            <p className="text-gray-400 text-sm">Complete a practice or test to see your scores here.</p>
+      <div className="max-w-lg mx-auto px-4 -mt-4 pb-10 space-y-4">
+        {!hasAny && (
+          <div className="bg-white rounded-3xl shadow-card p-10 text-center">
+            <div className="text-5xl mb-3">📭</div>
+            <p className="font-bold text-juz-navy">No history yet</p>
+            <p className="text-gray-400 text-sm mt-1">Complete a session to see scores here.</p>
+            <Link href="/" className="inline-block mt-5 px-6 py-2.5 rounded-2xl gradient-purple text-white font-bold text-sm">Go Practice!</Link>
           </div>
         )}
 
-        {/* Practice History */}
-        {TOPICS.map((topic) => {
-          const history = practiceHistories[topic.slug] ?? []
-          if (!history.length) return null
-          return (
-            <section key={topic.slug}>
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-2xl">{topic.icon}</span>
-                <h2 className={`font-bold text-base ${topic.colourText}`}>
-                  {topic.label}
-                </h2>
-              </div>
-              <div className="space-y-2">
-                {history.map((entry, i) => {
-                  const pct = Math.round((entry.score / entry.total) * 100)
-                  return (
-                    <div
-                      key={i}
-                      className={`bg-white rounded-xl border ${topic.colourBorder} p-4 flex items-center gap-4`}
-                    >
-                      <div
-                        className={`w-12 h-12 rounded-full ${topic.colourLight} border-2 ${topic.colourBorder} flex items-center justify-center shrink-0`}
-                      >
-                        <span className={`font-black text-sm ${topic.colourText}`}>
-                          {pct}%
-                        </span>
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-baseline justify-between gap-2">
-                          <p className={`font-bold text-base ${topic.colourText}`}>
-                            {entry.score} / {entry.total}
-                          </p>
-                          <p className="text-xs text-gray-400 shrink-0">
-                            #{history.length - i}
-                          </p>
-                        </div>
-                        <div className="mt-1.5 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                          <div
-                            className={`h-full rounded-full ${topic.colour}`}
-                            style={{ width: `${pct}%` }}
-                          />
-                        </div>
-                        <p className="text-xs text-gray-400 mt-1">
-                          {formatDate(entry.completedAt)}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </section>
-          )
-        })}
-
-        {/* Test History */}
-        {testHistory.length > 0 && (
-          <section>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="text-2xl">🏆</span>
-              <h2 className="font-bold text-base text-indigo-700">Mock Test</h2>
-            </div>
-            <div className="space-y-2">
-              {testHistory.map((entry, i) => {
-                const pct = Math.round((entry.score / entry.total) * 100)
-                return (
-                  <div
-                    key={i}
-                    className="bg-white rounded-xl border border-indigo-200 p-4 flex items-center gap-4"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-indigo-50 border-2 border-indigo-300 flex items-center justify-center shrink-0">
-                      <span className="font-black text-sm text-indigo-700">
-                        {pct}%
-                      </span>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-baseline justify-between gap-2">
-                        <p className="font-bold text-base text-indigo-700">
-                          {entry.score} / {entry.total}
-                        </p>
-                        <p className="text-xs text-gray-400 shrink-0">
-                          #{testHistory.length - i}
-                        </p>
-                      </div>
-                      <div className="mt-1.5 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                        <div
-                          className="h-full rounded-full bg-indigo-500"
-                          style={{ width: `${pct}%` }}
-                        />
-                      </div>
-                      <div className="flex items-center gap-3 mt-1">
-                        <p className="text-xs text-gray-400">
-                          {formatDate(entry.completedAt)}
-                        </p>
-                        {entry.timeTaken > 0 && (
-                          <p className="text-xs text-gray-400">
-                            ⏱ {formatSeconds(entry.timeTaken)}
-                          </p>
-                        )}
-                      </div>
-                    </div>
+        {/* Science */}
+        {TOPICS.some(t => (practiceH[t.slug] ?? []).length > 0) && (
+          <div className="bg-white rounded-3xl shadow-card p-5">
+            <h2 className="font-black text-juz-navy mb-4 flex items-center gap-2"><span>🔬</span> Science Practice</h2>
+            {TOPICS.map(t => {
+              const h = practiceH[t.slug] ?? []
+              if (!h.length) return null
+              return (
+                <div key={t.slug} className="mb-5 last:mb-0">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-lg">{t.icon}</span>
+                    <p className={`font-bold text-sm ${t.textColor}`}>{t.label}</p>
                   </div>
-                )
-              })}
-            </div>
-          </section>
+                  {h.map((e, i) => <ScoreRow key={i} score={e.score} total={e.total} date={e.completedAt} />)}
+                </div>
+              )
+            })}
+          </div>
         )}
-      </main>
+
+        {/* Science mock test */}
+        {testH.length > 0 && (
+          <div className="bg-white rounded-3xl shadow-card p-5">
+            <h2 className="font-black text-juz-navy mb-4 flex items-center gap-2"><span>🏆</span> Science Mock Test</h2>
+            {testH.map((e, i) => <ScoreRow key={i} score={e.score} total={e.total} date={e.completedAt} time={e.timeTaken} />)}
+          </div>
+        )}
+
+        {/* Math */}
+        {MATH_TOPICS.some(t => (mathH[t.slug] ?? []).length > 0) && (
+          <div className="bg-white rounded-3xl shadow-card p-5">
+            <h2 className="font-black text-juz-navy mb-4 flex items-center gap-2"><span>🔢</span> Mathematics Practice</h2>
+            {MATH_TOPICS.map(t => {
+              const h = mathH[t.slug] ?? []
+              if (!h.length) return null
+              return (
+                <div key={t.slug} className="mb-5 last:mb-0">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-lg">{t.icon}</span>
+                    <p className={`font-bold text-sm ${t.textColor}`}>{t.label}</p>
+                    <span className="text-xs text-gray-400">— {t.description}</span>
+                  </div>
+                  {h.map((e, i) => <ScoreRow key={i} score={e.score} total={e.total} date={e.completedAt} />)}
+                </div>
+              )
+            })}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

@@ -4,27 +4,45 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-:root {
-  --brand-purple: #7C3AED;
-}
-
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-  background-color: #F5F3FF;
+  background-color: #F5F0FF;
   min-height: 100vh;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
 /* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: #c4b5fd;
-  border-radius: 3px;
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #c4b5fd; border-radius: 3px; }
+
+/* Canvas cursor */
+canvas { cursor: crosshair; touch-action: none; }
+
+@layer utilities {
+  .gradient-purple {
+    background: linear-gradient(135deg, #8636CE 0%, #A855F7 100%);
+  }
+  .gradient-pink {
+    background: linear-gradient(135deg, #FF82BD 0%, #FF6B9D 100%);
+  }
+  .gradient-teal {
+    background: linear-gradient(135deg, #ADD5D5 0%, #7BC8C8 100%);
+  }
+  .gradient-orange {
+    background: linear-gradient(135deg, #F78B64 0%, #F97316 100%);
+  }
+  .gradient-card {
+    background: linear-gradient(145deg, #ffffff 0%, #faf7ff 100%);
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, #8636CE, #FF82BD);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 }

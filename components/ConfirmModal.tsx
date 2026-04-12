@@ -1,38 +1,37 @@
 'use client'
 
 interface Props {
-  selectedLabel: string // e.g. "A) Mammals, because..."
+  selectedLabel: string
   onConfirm: () => void
   onCancel: () => void
+  isMath?: boolean
 }
 
-export default function ConfirmModal({ selectedLabel, onConfirm, onCancel }: Props) {
+export default function ConfirmModal({ selectedLabel, onConfirm, onCancel, isMath }: Props) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-sm w-full p-6 text-center">
-        <div className="text-4xl mb-3">🤔</div>
-        <h2 className="text-xl font-bold text-brand-navy mb-2">
-          Are you sure?
-        </h2>
-        <p className="text-gray-600 mb-1 text-sm">Your chosen answer is:</p>
-        <p className="text-brand-purple font-semibold text-base mb-5 px-2 leading-snug">
-          {selectedLabel}
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 bg-black/40 backdrop-blur-sm">
+      <div className="bg-white rounded-3xl shadow-2xl max-w-sm w-full p-6 text-center animate-in slide-in-from-bottom-4 duration-200">
+        <div className="text-5xl mb-3">🤔</div>
+        <h2 className="text-xl font-black text-juz-navy mb-2">Lock in your answer?</h2>
+        <p className="text-gray-500 text-sm mb-3">
+          {isMath ? 'Your answer is:' : 'You picked:'}
         </p>
-        <p className="text-gray-500 text-sm mb-6">
-          Once you confirm, you cannot change your answer.
-        </p>
+        <div className="bg-juz-purple-light rounded-2xl px-4 py-3 mb-3">
+          <p className="text-juz-purple font-bold text-base leading-snug">{selectedLabel}</p>
+        </div>
+        <p className="text-gray-400 text-xs mb-5">You cannot change this once confirmed.</p>
         <div className="flex gap-3">
           <button
             onClick={onCancel}
-            className="flex-1 py-3 rounded-xl border-2 border-gray-300 text-gray-600 font-semibold hover:bg-gray-50 transition-colors"
+            className="flex-1 py-3 rounded-2xl border-2 border-gray-200 text-gray-500 font-bold hover:bg-gray-50 transition-colors"
           >
             Go Back
           </button>
           <button
             onClick={onConfirm}
-            className="flex-1 py-3 rounded-xl bg-violet-600 text-white font-semibold hover:bg-violet-700 transition-colors"
+            className="flex-1 py-3 rounded-2xl gradient-purple text-white font-bold hover:opacity-90 transition-opacity shadow-md"
           >
-            Yes, Confirm!
+            Yes, Lock It! 🔒
           </button>
         </div>
       </div>
