@@ -26,6 +26,7 @@ export interface PracticeHistoryEntry {
 
 export interface TestSession {
   questionOrder: number[]
+  selectedIds: string[]   // IDs of the 30 picked questions (10 per topic), used to restore on reload
   currentIndex: number
   answers: Record<number, number>
   startedAt: number

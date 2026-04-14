@@ -30,24 +30,54 @@ export default function TestPage() {
   const sessionRef = useRef<TestSession | null>(null)
 
   useEffect(() => {
-    import('@/data/test-questions').then((m) => {
-      setQuestions(m.default)
+    async function load() {
+      const [dlnl, cls, dm] = await Promise.all([
+        import('@/data/practice-diversity-living'),
+        import('@/data/practice-classification'),
+        import('@/data/practice-diversity-materials'),
+      ])
+      const allByTopic = [dlnl.default, cls.default, dm.default]
 
       const existing = loadTestSession()
-      if (existing && existing.currentIndex < m.default.length) {
-        setSession(existing)
-        sessionRef.current = existing
-        setPhase('answering')
+      if (existing && existing.selectedIds?.length === 30 && existing.currentIndex < 30) {
+        // Reconstruct the exact 30 questions from saved IDs
+        const allQs = allByTopic.flat()
+        const idMap = Object.fromEntries(allQs.map(q => [q.id, q]))
+        const restored = existing.selectedIds.map(id => idMap[id]).filter(Boolean)
+        if (restored.length === 30) {
+          setQuestions(restored)
+          setSession(existing)
+          sessionRef.current = existing
+          setPhase('answering')
+          setMounted(true)
+          return
+        }
       }
+
+      // No valid session — just prepare the question pool; don't auto-start
+      setQuestions(allByTopic.flat())
       setMounted(true)
-    })
+    }
+    load()
   }, [])
 
-  const startTest = (fresh: boolean) => {
-    if (!questions.length) return
+  const startTest = async (fresh: boolean) => {
     clearTestSession()
+    const [dlnl, cls, dm] = await Promise.all([
+      import('@/data/practice-diversity-living'),
+      import('@/data/practice-classification'),
+      import('@/data/practice-diversity-materials'),
+    ])
+    // Pick 10 random questions from each of the 3 topics
+    const picked = [
+      ...shuffle(dlnl.default.map((_, i) => i)).slice(0, 10).map(i => dlnl.default[i]),
+      ...shuffle(cls.default.map((_, i) => i)).slice(0, 10).map(i => cls.default[i]),
+      ...shuffle(dm.default.map((_, i) => i)).slice(0, 10).map(i => dm.default[i]),
+    ]
+    setQuestions(picked)
     const sess: TestSession = {
-      questionOrder: shuffle(questions.map((_, i) => i)),
+      questionOrder: shuffle(picked.map((_, i) => i)),
+      selectedIds: picked.map(q => q.id),
       currentIndex: 0,
       answers: {},
       startedAt: Date.now(),

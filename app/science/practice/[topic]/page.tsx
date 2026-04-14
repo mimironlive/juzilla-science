@@ -42,8 +42,8 @@ export default function SciencePracticePage() {
       else if (slug === 'diversity-materials') qs = (await import('@/data/practice-diversity-materials')).default
       setQuestions(qs)
       let sess = loadPracticeSession(slug)
-      if (!sess || sess.questionOrder.length !== qs.length) {
-        sess = { topic: slug, questionOrder: shuffle(qs.map((_, i) => i)), currentIndex: 0, answers: {}, startedAt: Date.now() }
+      if (!sess || sess.questionOrder.length !== 30) {
+        sess = { topic: slug, questionOrder: shuffle(qs.map((_, i) => i)).slice(0, 30), currentIndex: 0, answers: {}, startedAt: Date.now() }
         savePracticeSession(slug, sess)
       }
       setSession(sess)
@@ -100,7 +100,7 @@ export default function SciencePracticePage() {
 
   const handleRestart = () => {
     if (!questions.length) return
-    const sess: PracticeSession = { topic: slug, questionOrder: shuffle(questions.map((_, i) => i)), currentIndex: 0, answers: {}, startedAt: Date.now() }
+    const sess: PracticeSession = { topic: slug, questionOrder: shuffle(questions.map((_, i) => i)).slice(0, 30), currentIndex: 0, answers: {}, startedAt: Date.now() }
     savePracticeSession(slug, sess)
     setSession(sess)
     setPhase('answering')
