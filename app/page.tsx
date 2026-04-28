@@ -188,7 +188,7 @@ export default function HomePage() {
                           <span className="text-xs bg-amber-100 text-amber-600 px-2 py-0.5 rounded-full font-bold shrink-0">In Progress</span>
                         )}
                       </div>
-                      <p className="text-xs text-gray-400 mt-0.5">{t.description} • 30 questions • Canvas working</p>
+                      <p className="text-xs text-gray-400 mt-0.5">{t.description} • 30 questions{t.slug !== 'bar-graphs' ? ' • Canvas working' : ' • Chart + MCQ'}</p>
                       {best !== null && (
                         <div className="mt-2 flex items-center gap-2">
                           <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
@@ -206,7 +206,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <p className="text-center text-xs text-gray-400 py-6">version 2.1</p>
+        <p className="text-center text-xs text-gray-400 py-6">version 2.2</p>
       </div>
     </div>
   )

@@ -88,18 +88,37 @@ export const TOPICS: TopicMeta[] = [
 
 // ── Math ──────────────────────────────────────────────────────────────────────
 
+export interface BarData {
+  label: string
+  value: number
+}
+
+export interface BarGraphData {
+  title: string
+  yLabel: string   // e.g. "Number of students"
+  scale: number    // each grid interval = this many units (1, 2, 4 or 5)
+  bars: BarData[]
+}
+
 export interface MathQuestion {
   id: string
   question: string
-  answer: number
+  answer: number        // correct answer; option index when isMCQ=true
+  remainder?: number    // set for non-MCQ remainder division questions
   hint?: string
+  barGraph?: BarGraphData
+  isMCQ?: boolean
+  options?: string[]    // display labels for MCQ, e.g. ["10 R9", "11 R2", ...]
 }
+
+// Stored answer: plain number (regular / MCQ) or {q,r} object (remainder non-MCQ)
+export type MathAnswer = number | { q: number; r: number }
 
 export interface MathSession {
   topic: MathTopicSlug
   questionOrder: number[]
   currentIndex: number
-  answers: Record<number, number | null> // index → answered number or null (skipped)
+  answers: Record<number, MathAnswer | null>
   startedAt: number
 }
 
@@ -110,7 +129,7 @@ export interface MathHistoryEntry {
   completedAt: number
 }
 
-export type MathTopicSlug = 'tables-6789' | 'mult-div'
+export type MathTopicSlug = 'tables-6789' | 'mult-div' | 'word-problems' | 'bar-graphs'
 
 export interface MathTopicMeta {
   slug: MathTopicSlug
@@ -142,7 +161,27 @@ export const MATH_TOPICS: MathTopicMeta[] = [
     cardBg: 'bg-juz-yellow-light',
     textColor: 'text-amber-700',
     borderColor: 'border-amber-200',
-    description: '2-digit × 1-digit and ÷ problems',
+    description: '2-digit × 1-digit and ÷ with remainders',
+  },
+  {
+    slug: 'word-problems',
+    label: 'Word Problems',
+    icon: '📖',
+    gradient: 'from-teal-400 to-cyan-500',
+    cardBg: 'bg-juz-teal-light',
+    textColor: 'text-teal-700',
+    borderColor: 'border-teal-200',
+    description: 'Multiplication & division word problems',
+  },
+  {
+    slug: 'bar-graphs',
+    label: 'Bar Graphs',
+    icon: '📊',
+    gradient: 'from-violet-500 to-purple-600',
+    cardBg: 'bg-juz-purple-light',
+    textColor: 'text-juz-purple',
+    borderColor: 'border-purple-200',
+    description: 'Read and interpret bar graphs',
   },
 ]
 
