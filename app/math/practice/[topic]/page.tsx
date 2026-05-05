@@ -353,7 +353,7 @@ export default function MathPracticePage() {
                   value={activeField === 'q' ? inputQ : inputR}
                   onChange={v => activeField === 'q' ? setInputQ(v) : setInputR(v)}
                   onSubmit={handleSubmitRemainder}
-                  disabled={!inputQ || !inputR}
+                  submitDisabled={!inputQ || !inputR}
                 />
               </>
             )}

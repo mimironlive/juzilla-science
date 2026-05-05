@@ -4,10 +4,11 @@ interface Props {
   value: string
   onChange: (val: string) => void
   onSubmit: () => void
-  disabled?: boolean
+  disabled?: boolean        // blocks digit entry AND check (e.g. after answer revealed)
+  submitDisabled?: boolean  // blocks only the Check button (e.g. waiting for second field)
 }
 
-export default function NumberPad({ value, onChange, onSubmit, disabled }: Props) {
+export default function NumberPad({ value, onChange, onSubmit, disabled, submitDisabled }: Props) {
   const handleDigit = (d: string) => {
     if (disabled) return
     if (value.length >= 4) return // max 4 digits
@@ -19,18 +20,20 @@ export default function NumberPad({ value, onChange, onSubmit, disabled }: Props
     onChange(value.slice(0, -1))
   }
 
+  const checkDisabled = disabled || submitDisabled || !value
+
   const btn = (label: string, action: () => void, variant: 'digit' | 'back' | 'check' = 'digit') => {
     const base = 'flex items-center justify-center rounded-2xl font-bold text-xl select-none transition-all active:scale-95 h-14'
     const variants = {
       digit: 'bg-white border-2 border-juz-purple-light text-juz-navy shadow-sm hover:bg-juz-purple-light',
       back:  'bg-juz-orange-light border-2 border-orange-200 text-orange-600 hover:bg-orange-100',
-      check: `${disabled || !value ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'gradient-purple text-white shadow-md hover:opacity-90 cursor-pointer'}`,
+      check: `${checkDisabled ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'gradient-purple text-white shadow-md hover:opacity-90 cursor-pointer'}`,
     }
     return (
       <button
         key={label}
         onClick={action}
-        disabled={variant === 'check' && (disabled || !value)}
+        disabled={variant === 'check' && checkDisabled}
         className={`${base} ${variants[variant]}`}
       >
         {label}
