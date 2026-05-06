@@ -107,6 +107,50 @@ const questions: MathQuestion[] = [
   { id: 'mt-88', question: 'A teacher has 48 stickers.\nShe gives 6 stickers to each pupil.\nHow many pupils receive stickers?', answer: 8, hint: 'Which operation do you need?' },
   { id: 'mt-89', question: 'There are 7 shelves in a library.\nEach shelf holds 8 books.\nHow many books are there in all?', answer: 56, hint: 'Which operation do you need?' },
   { id: 'mt-90', question: 'A florist puts 9 flowers in each vase.\nThere are 6 vases.\nHow many flowers are there altogether?', answer: 54, hint: 'Which operation do you need?' },
+
+  // --- ×11 and ×12 facts ---
+  { id: 'mt-91', question: '6 × 11 = ?',  answer: 66,  hint: 'Can you think of a nearby fact you already know?' },
+  { id: 'mt-92', question: '7 × 11 = ?',  answer: 77,  hint: 'Can you think of a nearby fact you already know?' },
+  { id: 'mt-93', question: '8 × 11 = ?',  answer: 88,  hint: 'Can you think of a nearby fact you already know?' },
+  { id: 'mt-94', question: '9 × 11 = ?',  answer: 99,  hint: 'Can you think of a nearby fact you already know?' },
+  { id: 'mt-95', question: '6 × 12 = ?',  answer: 72,  hint: 'Try splitting 12 into two parts.' },
+  { id: 'mt-96', question: '7 × 12 = ?',  answer: 84,  hint: 'Try splitting 12 into two parts.' },
+  { id: 'mt-97', question: '8 × 12 = ?',  answer: 96,  hint: 'Try splitting 12 into two parts.' },
+  { id: 'mt-98', question: '9 × 12 = ?',  answer: 108, hint: 'Try splitting 12 into two parts.' },
+
+  // --- Division from ×11 and ×12 facts ---
+  { id: 'mt-99',  question: '66 ÷ 6 = ?',  answer: 11, hint: 'Which times table fact can help?' },
+  { id: 'mt-100', question: '77 ÷ 7 = ?',  answer: 11, hint: 'Which times table fact can help?' },
+  { id: 'mt-101', question: '88 ÷ 8 = ?',  answer: 11, hint: 'Which times table fact can help?' },
+  { id: 'mt-102', question: '99 ÷ 9 = ?',  answer: 11, hint: 'Which times table fact can help?' },
+  { id: 'mt-103', question: '72 ÷ 6 = ?',  answer: 12, hint: 'Which times table fact can help?' },
+  { id: 'mt-104', question: '84 ÷ 7 = ?',  answer: 12, hint: 'Which times table fact can help?' },
+  { id: 'mt-105', question: '96 ÷ 8 = ?',  answer: 12, hint: 'Which times table fact can help?' },
+  { id: 'mt-106', question: '108 ÷ 9 = ?', answer: 12, hint: 'Which times table fact can help?' },
+
+  // --- Missing number (×11 and ×12) ---
+  { id: 'mt-107', question: '6 × ? = 66\nWhat is the missing number?',  answer: 11, hint: 'Think about the related division or multiplication fact.' },
+  { id: 'mt-108', question: '7 × ? = 77\nWhat is the missing number?',  answer: 11, hint: 'Think about the related division or multiplication fact.' },
+  { id: 'mt-109', question: '8 × ? = 96\nWhat is the missing number?',  answer: 12, hint: 'Think about the related division or multiplication fact.' },
+  { id: 'mt-110', question: '9 × ? = 108\nWhat is the missing number?', answer: 12, hint: 'Think about the related division or multiplication fact.' },
+
+  // --- Word problems (×11 and ×12) ---
+  { id: 'mt-111', question: 'There are 9 children.\nEach child has 12 marbles.\nHow many marbles are there in total?',    answer: 108, hint: 'Which operation do you need?' },
+  { id: 'mt-112', question: 'A pack has 7 biscuits.\nThere are 12 packs.\nHow many biscuits are there altogether?',       answer: 84,  hint: 'Which operation do you need?' },
+  { id: 'mt-113', question: 'There are 8 teams.\nEach team has 11 players.\nHow many players are there in all?',          answer: 88,  hint: 'Which operation do you need?' },
+  { id: 'mt-114', question: 'A bag contains 6 sweets.\nThere are 11 bags.\nHow many sweets are there in total?',          answer: 66,  hint: 'Which operation do you need?' },
+
+  // --- Comparison (×11 and ×12) ---
+  { id: 'mt-115', question: 'Which is greater: 9 × 11 or 8 × 12?\nWrite the larger value.',  answer: 99,  hint: 'Calculate each product separately first.' },
+  { id: 'mt-116', question: 'Which is smaller: 6 × 12 or 7 × 11?\nWrite the smaller value.', answer: 72,  hint: 'Calculate each product separately first.' },
+
+  // --- "How many groups of" (×11 and ×12) ---
+  { id: 'mt-117', question: 'How many groups of 6 are in 66?', answer: 11, hint: 'Which operation helps find a missing factor?' },
+  { id: 'mt-118', question: 'How many groups of 7 are in 77?', answer: 11, hint: 'Which operation helps find a missing factor?' },
+
+  // --- Product form (×11 and ×12) ---
+  { id: 'mt-119', question: 'What is the product of 8 and 11?', answer: 88,  hint: 'What does "product" mean?' },
+  { id: 'mt-120', question: 'What is the product of 9 and 12?', answer: 108, hint: 'What does "product" mean?' },
 ]
 
 export default questions

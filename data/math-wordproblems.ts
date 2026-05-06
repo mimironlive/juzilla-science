@@ -559,6 +559,45 @@ const questions: MathQuestion[] = [
     hint: 'Think about what the question is asking for.',
   },
 
+  // ─── GROUP F: More multiplication word problems (wp-91 to wp-100) ────────
+
+  { id: 'wp-91', question: '7 buses each carry 43 pupils on a school trip.\nHow many pupils are there in all?', answer: 301, hint: 'Which operation do you need?' },
+  { id: 'wp-92', question: 'Siti buys 6 boxes of chocolates.\nEach box has 18 chocolates.\nHow many chocolates does she buy in total?', answer: 108, hint: 'What are you trying to find?' },
+  { id: 'wp-93', question: 'A gardener plants 9 seeds in each pot.\nHe has 56 pots.\nHow many seeds does he plant altogether?', answer: 504, hint: 'Which operation do you need?' },
+  { id: 'wp-94', question: 'Ravi strings 8 beads onto each keychain.\nHe makes 47 keychains for a school fair.\nHow many beads does he use in total?', answer: 376, hint: 'Think about what the question is asking for.' },
+  { id: 'wp-95', question: 'A train has 9 carriages.\nEach carriage has 68 seats.\nHow many seats does the train have in total?', answer: 612, hint: 'Which operation do you need?' },
+  { id: 'wp-96', question: 'Ali earns $7 per hour working at a food stall.\nHe works 38 hours in a month.\nHow much does he earn that month?', answer: 266, hint: 'Read carefully — what is given and what is unknown?' },
+  { id: 'wp-97', question: 'Mrs Tan bakes 24 cupcakes on each tray.\nShe bakes 9 trays for a party.\nHow many cupcakes does she bake altogether?', answer: 216, hint: 'What are you trying to find?' },
+  { id: 'wp-98', question: 'A machine produces 8 parts every minute.\nHow many parts does it produce in 94 minutes?', answer: 752, hint: 'Which operation do you need?' },
+  { id: 'wp-99', question: 'Each desk has 6 drawers.\nThere are 45 desks in the office.\nHow many drawers are there in all?', answer: 270, hint: 'Think about what the question is asking for.' },
+  { id: 'wp-100', question: 'A pool is filled at 9 litres per minute.\nHow many litres are in the pool after 54 minutes?', answer: 486, hint: 'Which operation do you need?' },
+
+  // ─── GROUP G: More division word problems, no remainder (wp-101 to wp-110) ─
+
+  { id: 'wp-101', question: '336 sweets are shared equally among 8 children.\nHow many sweets does each child get?', answer: 42, hint: 'Is this a sharing or grouping problem?' },
+  { id: 'wp-102', question: 'A shelf holds 7 books.\n294 books need to be placed on shelves.\nHow many shelves are needed?', answer: 42, hint: 'What are you trying to find?' },
+  { id: 'wp-103', question: '270 pupils are divided into 9 equal groups.\nHow many pupils are in each group?', answer: 30, hint: 'Which operation do you need?' },
+  { id: 'wp-104', question: 'A rope 192 cm long is cut into 6 equal pieces.\nHow long is each piece?', answer: 32, hint: 'Is this a sharing or grouping problem?' },
+  { id: 'wp-105', question: 'A factory packs 504 biscuits into boxes of 8.\nHow many boxes are needed?', answer: 63, hint: 'Think about what the question is asking for.' },
+  { id: 'wp-106', question: 'Mr Lim drives the same distance for each trip.\nHe drives 318 km over 6 trips.\nHow far is each trip?', answer: 53, hint: 'Read carefully — what is given and what is unknown?' },
+  { id: 'wp-107', question: '441 trading cards are shared equally among 7 friends.\nHow many cards does each friend get?', answer: 63, hint: 'Is this a sharing or grouping problem?' },
+  { id: 'wp-108', question: '288 chairs are arranged in rows of 9.\nHow many rows are there?', answer: 32, hint: 'What are you trying to find?' },
+  { id: 'wp-109', question: 'A carton holds 6 eggs.\n282 eggs need to be packed.\nHow many cartons are needed?', answer: 47, hint: 'Which operation do you need?' },
+  { id: 'wp-110', question: '392 pages are printed equally by 8 machines.\nHow many pages does each machine print?', answer: 49, hint: 'Is this a sharing or grouping problem?' },
+
+  // ─── GROUP H: Two-step and remainder problems (wp-111 to wp-120) ─────────
+
+  { id: 'wp-111', question: 'Ravi has 9 packs of stickers.\nEach pack has 14 stickers.\nHe gives 36 stickers to his classmates.\nHow many stickers does he have left?', answer: 90, hint: 'You may need more than one step.' },
+  { id: 'wp-112', question: '73 children board minibuses of 9.\nHow many complete minibuses are filled?', answer: 8, hint: 'Will there be anything left over?' },
+  { id: 'wp-113', question: '73 children board minibuses of 9.\nAfter filling as many minibuses as possible, how many children are left over?', answer: 1, hint: 'What is left after you divide as evenly as possible?' },
+  { id: 'wp-114', question: 'Siti has 86 cookies to pack into bags of 8.\nHow many complete bags can she fill?', answer: 10, hint: 'Will there be anything left over?' },
+  { id: 'wp-115', question: 'Siti has 86 cookies and packs them into bags of 8.\nAfter filling as many bags as possible, how many cookies are left over?', answer: 6, hint: 'What is left after you divide as evenly as possible?' },
+  { id: 'wp-116', question: 'Ali saves $7 each day.\nAfter 8 days, he spends $29 on a book.\nHow much money does he have left?', answer: 27, hint: 'You may need more than one step.' },
+  { id: 'wp-117', question: 'A factory makes 6 items per hour for 9 hours.\n7 items are found to be faulty and are removed.\nHow many good items are there?', answer: 47, hint: 'You may need more than one step.' },
+  { id: 'wp-118', question: 'Mr Lim has 95 flowers.\nHe makes bouquets of 8 flowers each.\nHow many complete bouquets can he make?', answer: 11, hint: 'Will there be anything left over?' },
+  { id: 'wp-119', question: 'Mr Lim has 95 flowers and makes bouquets of 8 flowers each.\nAfter making as many bouquets as possible, how many flowers are left over?', answer: 7, hint: 'What is left after you divide as evenly as possible?' },
+  { id: 'wp-120', question: 'Beng saves $9 a week for 7 weeks.\nHe spends $28 on a game.\nHow much money does he have left?', answer: 35, hint: 'You may need more than one step.' },
+
 ]
 
 export default questions

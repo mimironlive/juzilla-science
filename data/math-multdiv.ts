@@ -109,6 +109,50 @@ const questions: MathQuestion[] = [
   { id: 'md-88', question: '314 × 9 = ?',  answer: 2826, hint: 'Split the hundreds, tens, and ones.' },
   { id: 'md-89', question: '221 × 6 = ?',  answer: 1326, hint: 'Split the hundreds, tens, and ones.' },
   { id: 'md-90', question: '412 × 7 = ?',  answer: 2884, hint: 'Split the hundreds, tens, and ones.' },
+
+  // ── GROUP F: More 2-digit × 1-digit ───────────────────────────────────────
+  { id: 'md-91', question: '44 × 6 = ?',   answer: 264, hint: 'Try splitting the number.' },
+  { id: 'md-92', question: '45 × 7 = ?',   answer: 315, hint: 'Try splitting the number.' },
+  { id: 'md-93', question: '46 × 8 = ?',   answer: 368, hint: 'Try splitting the number.' },
+  { id: 'md-94', question: '47 × 9 = ?',   answer: 423, hint: 'Try splitting the number.' },
+  { id: 'md-95', question: '51 × 6 = ?',   answer: 306, hint: 'Try splitting the number.' },
+  { id: 'md-96', question: '52 × 7 = ?',   answer: 364, hint: 'Try splitting the number.' },
+  { id: 'md-97', question: '53 × 8 = ?',   answer: 424, hint: 'Try splitting the number.' },
+  { id: 'md-98', question: '54 × 9 = ?',   answer: 486, hint: 'Try splitting the number.' },
+
+  // ── GROUP G: More division, no remainder ──────────────────────────────────
+  { id: 'md-99',  question: '96 ÷ 6 = ?',   answer: 16,  hint: 'Use long division step by step.' },
+  { id: 'md-100', question: '98 ÷ 7 = ?',   answer: 14,  hint: 'Use long division step by step.' },
+  { id: 'md-101', question: '104 ÷ 8 = ?',  answer: 13,  hint: 'Use long division step by step.' },
+  { id: 'md-102', question: '108 ÷ 9 = ?',  answer: 12,  hint: 'Use a times table fact.' },
+
+  // ── GROUP H: More division with remainders — non-MCQ ──────────────────────
+  { id: 'md-103', question: '97 ÷ 7 = ? R ?', answer: 13, remainder: 6, hint: 'Find the largest multiple that fits, then subtract.' },
+  { id: 'md-104', question: '73 ÷ 6 = ? R ?', answer: 12, remainder: 1, hint: 'Find the largest multiple that fits, then subtract.' },
+  { id: 'md-105', question: '89 ÷ 8 = ? R ?', answer: 11, remainder: 1, hint: 'Find the largest multiple that fits, then subtract.' },
+  { id: 'md-106', question: '92 ÷ 9 = ? R ?', answer: 10, remainder: 2, hint: 'Find the largest multiple that fits, then subtract.' },
+
+  // ── GROUP I: More division with remainders — MCQ ───────────────────────────
+  { id: 'md-107', question: 'What is 77 ÷ 5?',  isMCQ: true, options: ['15 R2', '16 R0', '15 R3', '14 R7'], answer: 0, hint: 'Find the quotient using long division, then find what\'s left.' },
+  { id: 'md-108', question: 'What is 61 ÷ 4?',  isMCQ: true, options: ['15 R1', '15 R0', '16 R1', '14 R5'], answer: 0, hint: 'Find the quotient using long division, then find what\'s left.' },
+  { id: 'md-109', question: 'What is 94 ÷ 7?',  isMCQ: true, options: ['13 R3', '14 R1', '13 R4', '12 R10'], answer: 0, hint: 'Find the quotient using long division, then find what\'s left.' },
+  { id: 'md-110', question: 'What is 87 ÷ 6?',  isMCQ: true, options: ['14 R3', '15 R0', '14 R2', '13 R9'], answer: 0, hint: 'Find the quotient using long division, then find what\'s left.' },
+
+  // ── GROUP J: More word problems with remainders ────────────────────────────
+  { id: 'md-111', question: '58 pupils need to sit in rows of 9.\nHow many complete rows can be formed?', answer: 6, hint: 'Think about whether to multiply or divide.' },
+  { id: 'md-112', question: '58 pupils sit in rows of 9.\nAfter forming the rows, how many pupils are left over?', answer: 4, hint: 'Find the largest multiple that fits, then subtract.' },
+  { id: 'md-113', question: 'A farmer has 79 eggs to pack in boxes of 6.\nHow many complete boxes can he fill?', answer: 13, hint: 'Think about whether to multiply or divide.' },
+  { id: 'md-114', question: 'A farmer has 79 eggs and packs them in boxes of 6.\nHow many eggs are left over?', answer: 1, hint: 'Find the largest multiple that fits, then subtract.' },
+
+  // ── GROUP K: More 3-digit × 1-digit multiplication ────────────────────────
+  { id: 'md-115', question: '213 × 6 = ?',  answer: 1278, hint: 'Split the hundreds, tens, and ones.' },
+  { id: 'md-116', question: '342 × 7 = ?',  answer: 2394, hint: 'Split the hundreds, tens, and ones.' },
+  { id: 'md-117', question: '215 × 8 = ?',  answer: 1720, hint: 'Split the hundreds, tens, and ones.' },
+  { id: 'md-118', question: '143 × 9 = ?',  answer: 1287, hint: 'Split the hundreds, tens, and ones.' },
+
+  // ── GROUP L: Mixed word problems ──────────────────────────────────────────
+  { id: 'md-119', question: 'Each page of a sticker book has 9 stickers.\nThere are 47 pages.\nHow many stickers are there in total?', answer: 423, hint: 'Think about whether to multiply or divide.' },
+  { id: 'md-120', question: 'A crate holds 8 bottles.\nA shopkeeper has 95 bottles.\nHow many complete crates can he fill?', answer: 11, hint: 'Think about whether to multiply or divide.' },
 ]
 
 export default questions
