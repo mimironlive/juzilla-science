@@ -1,7 +1,8 @@
 import { MathQuestion } from '@/lib/types'
 
-// 90 word problems — P3 MOE Singapore
+// 150 word problems — P3 MOE Singapore
 // Multiplication, Division (with and without remainders), Two-step problems
+// Repeating patterns (find the nth term), Transfer/comparison problems
 const questions: MathQuestion[] = [
 
   // ─── GROUP A: Multiplication word problems (wp-1 to wp-25) ───────────────
@@ -597,6 +598,195 @@ const questions: MathQuestion[] = [
   { id: 'wp-118', question: 'Mr Lim has 95 flowers.\nHe makes bouquets of 8 flowers each.\nHow many complete bouquets can he make?', answer: 11, hint: 'Will there be anything left over?' },
   { id: 'wp-119', question: 'Mr Lim has 95 flowers and makes bouquets of 8 flowers each.\nAfter making as many bouquets as possible, how many flowers are left over?', answer: 7, hint: 'What is left after you divide as evenly as possible?' },
   { id: 'wp-120', question: 'Beng saves $9 a week for 7 weeks.\nHe spends $28 on a game.\nHow much money does he have left?', answer: 35, hint: 'You may need more than one step.' },
+
+  // ─── GROUP I: Repeating letter patterns — find the nth letter (wp-121 to wp-130) ─
+
+  {
+    id: 'wp-121',
+    question: 'The letters E, F, G, H repeat in the pattern below.\nE F G H E F G H E F G H ...\nWhat is the 39th letter in the pattern?',
+    isMCQ: true, options: ['E', 'F', 'G', 'H'], answer: 2,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-122',
+    question: 'The letters A, B, C, D repeat in the pattern below.\nA B C D A B C D A B C D ...\nWhat is the 27th letter in the pattern?',
+    isMCQ: true, options: ['A', 'B', 'C', 'D'], answer: 2,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-123',
+    question: 'The letters A, B, C repeat in the pattern below.\nA B C A B C A B C ...\nWhat is the 50th letter in the pattern?',
+    isMCQ: true, options: ['A', 'B', 'C', 'D'], answer: 1,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-124',
+    question: 'The letters P, Q, R, S repeat in the pattern below.\nP Q R S P Q R S P Q R S ...\nWhat is the 55th letter in the pattern?',
+    isMCQ: true, options: ['P', 'Q', 'R', 'S'], answer: 2,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-125',
+    question: 'Lucy uses 8 letters to form the pattern below.\nA B B C D A D A A B B C D A D A ...\nWhat is the 165th letter in the pattern?',
+    isMCQ: true, options: ['A', 'B', 'C', 'D'], answer: 3,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-126',
+    question: 'The letters X and Y repeat in the pattern below.\nX Y X Y X Y X Y ...\nWhat is the 99th letter in the pattern?',
+    isMCQ: true, options: ['W', 'X', 'Y', 'Z'], answer: 1,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-127',
+    question: 'The letters A, B, C, D, E repeat in the pattern below.\nA B C D E A B C D E A B C D E ...\nWhat is the 83rd letter in the pattern?',
+    isMCQ: true, options: ['A', 'B', 'C', 'E'], answer: 2,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-128',
+    question: 'The letters M, N, O, P repeat in the pattern below.\nM N O P M N O P M N O P ...\nWhat is the 71st letter in the pattern?',
+    isMCQ: true, options: ['M', 'N', 'O', 'P'], answer: 2,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-129',
+    question: 'The letters A, A, B, B repeat in the pattern below.\nA A B B A A B B A A B B ...\nWhat is the 46th letter in the pattern?',
+    isMCQ: true, options: ['A', 'B', 'C', 'D'], answer: 0,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-130',
+    question: 'The letters P, Q, Q, R repeat in the pattern below.\nP Q Q R P Q Q R P Q Q R ...\nWhat is the 63rd letter in the pattern?',
+    isMCQ: true, options: ['P', 'Q', 'R', 'S'], answer: 1,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+
+  // ─── GROUP J: Repeating shape patterns — find the nth shape (wp-131 to wp-135) ──
+
+  {
+    id: 'wp-131',
+    question: 'The pattern below repeats every 5 shapes:\n△  ●  ◆  ■  ★  △  ●  ◆  ■  ★  ...\nWhat is the 100th shape in the pattern?',
+    isMCQ: true, options: ['Triangle', 'Circle', 'Diamond', 'Star'], answer: 3,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-132',
+    question: 'The pattern below repeats every 5 shapes:\n△  ●  ◆  ■  ★  △  ●  ◆  ■  ★  ...\nWhat is the 67th shape in the pattern?',
+    isMCQ: true, options: ['Triangle', 'Circle', 'Diamond', 'Rectangle'], answer: 1,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-133',
+    question: 'The pattern below repeats every 3 shapes:\n●  ■  △  ●  ■  △  ●  ■  △  ...\nWhat is the 40th shape in the pattern?',
+    isMCQ: true, options: ['Circle', 'Square', 'Triangle', 'Star'], answer: 0,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-134',
+    question: 'The pattern below repeats every 4 shapes:\n★  ♥  ◆  ●  ★  ♥  ◆  ●  ...\nWhat is the 77th shape in the pattern?',
+    isMCQ: true, options: ['Star', 'Heart', 'Diamond', 'Circle'], answer: 0,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+  {
+    id: 'wp-135',
+    question: 'The pattern below repeats every 3 shapes:\n△  □  ○  △  □  ○  △  □  ○  ...\nWhat is the 52nd shape in the pattern?',
+    isMCQ: true, options: ['Triangle', 'Square', 'Circle', 'Star'], answer: 0,
+    hint: 'How long is the repeating unit? Use division to find which position in the cycle.',
+  },
+
+  // ─── GROUP K: Transfer / comparison problems (wp-136 to wp-150) ─────────────
+
+  {
+    id: 'wp-136',
+    question: 'My brother has 94 more stickers than my sister.\nMy brother gives my sister 38 stickers.\nHow many more stickers does my brother have than my sister now?',
+    answer: 18,
+    hint: 'Think about what happens to the difference each time one sticker is transferred.',
+  },
+  {
+    id: 'wp-137',
+    question: 'Linda has 150 more marbles than Sally.\nLinda gives Sally some marbles so that Sally has 46 fewer marbles than Linda.\nHow many marbles does Linda give to Sally?',
+    answer: 52,
+    hint: 'How much does the gap need to change? Each marble transferred closes the gap by 2.',
+  },
+  {
+    id: 'wp-138',
+    question: 'Tom has 80 more cards than Jerry.\nTom gives Jerry 20 cards.\nHow many more cards does Tom have than Jerry now?',
+    answer: 40,
+    hint: 'Think about what happens to the difference each time one card is transferred.',
+  },
+  {
+    id: 'wp-139',
+    question: 'Ali has 120 more stamps than Beng.\nAli gives Beng 35 stamps.\nHow many more stamps does Ali have than Beng now?',
+    answer: 50,
+    hint: 'Think about what happens to the difference each time one stamp is transferred.',
+  },
+  {
+    id: 'wp-140',
+    question: 'Siti has 64 more beads than Ravi.\nSiti gives Ravi 25 beads.\nHow many more beads does Siti have than Ravi now?',
+    answer: 14,
+    hint: 'Think about what happens to the difference each time one bead is transferred.',
+  },
+  {
+    id: 'wp-141',
+    question: 'A box has 56 more oranges than a bag.\nSome oranges are moved from the box to the bag so that the bag has 12 fewer oranges than the box.\nHow many oranges are moved?',
+    answer: 22,
+    hint: 'How much does the gap need to change? Each orange moved closes the gap by 2.',
+  },
+  {
+    id: 'wp-142',
+    question: 'Mrs Lee has 90 more stickers than Mrs Tan.\nMrs Lee gives Mrs Tan some stickers so that they have the same number.\nHow many stickers does Mrs Lee give to Mrs Tan?',
+    answer: 45,
+    hint: 'How much does the gap need to change? Each sticker transferred closes the gap by 2.',
+  },
+  {
+    id: 'wp-143',
+    question: 'Mr Lim has 72 more apples than Mr Ong.\nMr Lim gives Mr Ong some apples so that Mr Ong has 18 fewer apples than Mr Lim.\nHow many apples does Mr Lim give to Mr Ong?',
+    answer: 27,
+    hint: 'How much does the gap need to change? Each apple moved closes the gap by 2.',
+  },
+  {
+    id: 'wp-144',
+    question: 'Two classes have 90 pupils altogether.\nClass A has 12 more pupils than Class B.\nHow many pupils are in Class B?',
+    answer: 39,
+    hint: 'Draw a model. Think about how the total relates to both classes.',
+  },
+  {
+    id: 'wp-145',
+    question: 'Two baskets have 84 oranges altogether.\nBasket A has 20 more oranges than Basket B.\nHow many oranges are in Basket A?',
+    answer: 52,
+    hint: 'Draw a model. Think about how the total relates to both baskets.',
+  },
+  {
+    id: 'wp-146',
+    question: 'A bookshop had 96 more books than a library stall.\nThe bookshop gave 30 books to the library stall.\nHow many more books does the bookshop have than the library stall now?',
+    answer: 36,
+    hint: 'Think about what happens to the difference each time one book is transferred.',
+  },
+  {
+    id: 'wp-147',
+    question: 'Kai has 110 more marbles than Nora.\nKai gives Nora some marbles so that they have the same number.\nHow many marbles does Kai give to Nora?',
+    answer: 55,
+    hint: 'How much does the gap need to change? Each marble transferred closes the gap by 2.',
+  },
+  {
+    id: 'wp-148',
+    question: 'A jar has 84 more sweets than a box.\nSome sweets are moved from the jar to the box so that the jar has 24 more sweets than the box.\nHow many sweets are moved from the jar to the box?',
+    answer: 30,
+    hint: 'How much does the gap need to change? Each sweet moved closes the gap by 2.',
+  },
+  {
+    id: 'wp-149',
+    question: 'Priya has 76 more stamps than Sam.\nPriya gives Sam 28 stamps.\nHow many more stamps does Priya have than Sam now?',
+    answer: 20,
+    hint: 'Think about what happens to the difference each time one stamp is transferred.',
+  },
+  {
+    id: 'wp-150',
+    question: 'Ahmad has 200 more marbles than David.\nAhmad gives David some marbles so that Ahmad has 80 more marbles than David.\nHow many marbles does Ahmad give to David?',
+    answer: 60,
+    hint: 'How much does the gap need to change? Each marble transferred closes the gap by 2.',
+  },
 
 ]
 
